@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shrey, Be My Valentine? 💘</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: "Comic Sans MS", cursive;
+    background: linear-gradient(135deg, #ffd6e8, #ffe4f2, #fff0f5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 420px;
+    position: relative;
+}
+
+h1 {
+    color: #ff4f81;
+    font-size: 28px;
+}
+
+.main-photo {
+    width: 250px;
+    border-radius: 25px;
+    margin: 15px 0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#yesBtn {
+    background-color: #ff4f81;
+    color: white;
+}
+
+#noBtn {
+    background-color: #ccc;
+    margin-left: 10px;
+}
+
+.heart {
+    position: absolute;
+    color: pink;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+</audio>
+
+<div class="container">
+    <h1>Shrey 💕<br>Will you be my Valentine? 🥹</h1>
+
+    <!-- YOUR PHOTO -->
+    <img src="me.jpg" class="main-photo">
+
+    <div class="buttons">
+        <button id="yesBtn">YES 💖</button>
+        <button id="noBtn">No 🙈</button>
+    </div>
+</div>
+
+<script>
+let yesBtn = document.getElementById("yesBtn");
+let noBtn = document.getElementById("noBtn");
+let size = 18;
+
+noBtn.addEventListener("click", function() {
+    size += 12;
+    yesBtn.style.fontSize = size + "px";
+    yesBtn.style.padding = (size/1.3) + "px " + (size*1.5) + "px";
+});
+
+yesBtn.addEventListener("click", function() {
+    document.body.innerHTML = `
+        <div style="display:flex;justify-content:center;align-items:center;height:100vh;text-align:center;font-family:'Comic Sans MS',cursive;background:linear-gradient(135deg,#ffd6e8,#fff0f5);">
+            <div>
+                <h1 style="color:#ff4f81;font-size:40px;">YAYYYYY SHREY 💘🥰</h1>
+                <p style="font-size:22px;">Best Valentine Ever 💖</p>
+            </div>
+        </div>
+    `;
+});
+
+// Floating hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
